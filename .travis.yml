@@ -1,7 +1,9 @@
 sudo: required
+language: generic
 services: 
   - docker
-
 before_install:
   - docker build -t soliveirawh/docker-react:latest -f Dockerfile.dev .
-
+script:
+  - docker run -e CI=true soliveirawh/docker-react:latest npm run test
+  
