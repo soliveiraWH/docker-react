@@ -1,0 +1,7 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t soliveirawh/docker-react:latest -f Dockerfile.dev .
+
