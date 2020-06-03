@@ -6,4 +6,14 @@ before_install:
   - docker build -t soliveirawh/docker-react:latest -f Dockerfile.dev .
 script:
   - docker run -e CI=true soliveirawh/docker-react:latest npm run test
-  
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-497162222212"
+  bucket_path: "docker-react"
+on:
+  branch: master
+access_key_id: $AWS_ACCESSKEY
+secret_key_id: $AWS_SECRETKEY
